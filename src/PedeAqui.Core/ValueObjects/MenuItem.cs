@@ -1,6 +1,6 @@
 using PedeAqui.Core.SeedWork.Enums;
 
-namespace PedeAqui.Api.Models
+namespace PedeAqui.Core.ValueObjects
 {
     public class MenuItem
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PedeAqui.Api.Models
+namespace PedeAqui.Core.ValueObjects
 {
     public class Menu
     {
