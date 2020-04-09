@@ -1,9 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedeAqui.Api.Models.Request;
+using PedeAqui.Api.Utils;
 using PedeAqui.Core.Entities;
-using PedeAqui.Core.Services.Interfaces;
+using PedeAqui.Core.Repositories.Interfaces;
 
 namespace PedeAqui.Api.Controllers
 {
@@ -13,12 +15,12 @@ namespace PedeAqui.Api.Controllers
     {
         private readonly ILogger<StoreController> _logger;
         private readonly IMapper _mapper;
-        private readonly IStoreService _service;
+        private readonly IStoreRepository _repository;
 
-        public StoreController(ILogger<StoreController> logger, IStoreService service, IMapper mapper)
+        public StoreController(ILogger<StoreController> logger, IStoreRepository repository, IMapper mapper)
         {
             _logger = logger;
-            _service = service;
+            _repository = repository;
             _mapper = mapper;
         }
 
@@ -26,9 +28,23 @@ namespace PedeAqui.Api.Controllers
         public IActionResult CreateStore([FromBody] StorePostRequest store)
         {
             var model = _mapper.Map<Store>(store);
-            _service.Add(model);
+            var location = this.HttpContext.GetLocation(model.Id);
 
-            return Ok(model);
+            _repository.Add(model);
+            return Created(location, model);
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public IActionResult Get([FromRoute] Guid id)
+        {
+            return Ok(_repository.GetById(id));
+        }
+
+        [HttpGet]
+        public IActionResult GetAll([FromQuery] int pageSize = 20, [FromQuery] int pageNumber = 1)
+        {
+            return Ok(_repository.GetAll(null, pageSize, pageNumber));
         }
 
     }

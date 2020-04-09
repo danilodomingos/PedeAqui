@@ -20,7 +20,7 @@ namespace PedeAqui.Infra
             AddConventions();
             AddMappings();
 
-            services.AddScoped<IMongoClient, MongoClient>(p => {
+            services.AddSingleton<IMongoClient, MongoClient>(p => {
                 return new MongoClient(settings.Connection);
             });
 
@@ -44,6 +44,10 @@ namespace PedeAqui.Infra
             {
                 cm.AutoMap();
                 cm.MapIdField(p => p.Id);
+            });
+
+            BsonClassMap.RegisterClassMap<Store>(cm => {
+                cm.AutoMap();
             });
 
             BsonClassMap.RegisterClassMap<MenuItem>(cm => {

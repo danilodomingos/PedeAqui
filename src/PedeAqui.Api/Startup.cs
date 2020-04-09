@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PedeAqui.Api.Profiles;
 using PedeAqui.Core.Repositories.Interfaces;
-using PedeAqui.Core.Services.Interfaces;
+using PedeAqui.Infra;
 using PedeAqui.Infra.Repositories;
 
 namespace PedeAqui.Api
@@ -26,7 +26,11 @@ namespace PedeAqui.Api
             services.AddControllers();
             services.AddAutoMapper(c => c.AddProfile<StoreProfile>(), typeof(Startup));
 
-            services.AddScoped<IStoreService, StoreService>();
+            var databaseSettings = new DatabaseSettings();
+            Configuration.GetSection("DatabaseSettings").Bind(databaseSettings);
+
+            services.AddDatabaseConfiguration(databaseSettings);
+            
             services.AddScoped<IStoreRepository, StoreRepository>();
         }
 

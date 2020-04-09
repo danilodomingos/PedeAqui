@@ -1,8 +1,12 @@
 using System;
-using System.Collections.Generic;
+using System.Linq.Expressions;
 using Mongo.CRUD;
+using MongoDB.Driver;
 using PedeAqui.Core.Entities;
 using PedeAqui.Core.Repositories.Interfaces;
+using PedeAqui.Core.SeedWork;
+using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Infra.Helper;
 
 namespace PedeAqui.Infra.Repositories
 {
@@ -24,19 +28,31 @@ namespace PedeAqui.Infra.Repositories
             _dbContext.Delete(id);
         }
 
-        public List<TEntity> GetAll(Func<TEntity, bool> spec)
+        public PageResult<TEntity> GetAll(Expression<Func<TEntity, bool>> spec, int pageSize = 20, int pageNumber = 1, 
+            string sortField = null, SortModeEnum sort = SortModeEnum.Asc)
         {
-            throw new NotImplementedException();
+            if(spec == null)
+            {
+                spec = p => p.Id != null;
+            }
+
+            var options = PaginationHelper.BuildOptions(pageSize, pageNumber, sortField, sort);
+            var search =_dbContext.Search(spec, options);
+            var hasNextPage = PaginationHelper.HasNextPage(pageSize, pageNumber, search.Count);
+
+            return new PageResult<TEntity>(search.Documents, pageNumber, pageSize, search.Count, hasNextPage);
         }
 
         public TEntity GetById(Guid id)
         {
-            throw new NotImplementedException();
+            Expression<Func<TEntity, bool>> exp = p => p.Id == id;
+            return _dbContext.Collection.Find(exp)?.FirstOrDefault();
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            Expression<Func<TEntity, bool>> exp = p => p.Id == entity.Id;
+            _dbContext.UpdateByQuery(exp, entity);
         }
     }
 }
