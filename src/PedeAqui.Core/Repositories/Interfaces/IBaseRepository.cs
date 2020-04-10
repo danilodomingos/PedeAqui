@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
 using PedeAqui.Core.Entities;
 using PedeAqui.Core.SeedWork;
@@ -13,7 +12,7 @@ namespace PedeAqui.Core.Repositories.Interfaces
         void Update(TEntity entity);
         void Delete(Guid id);
         TEntity GetById(Guid id);
-        PageResult<TEntity> GetAll(Expression<Func<TEntity, bool>> spec, int pageSize = 20, int pageNumber = 1, 
+        PageResult<TEntity> GetAll(Expression<Func<TEntity, bool>> spec = null, int pageSize = 20, int pageNumber = 1, 
             string sortField = null, SortModeEnum sort = SortModeEnum.Asc);
     }
 }

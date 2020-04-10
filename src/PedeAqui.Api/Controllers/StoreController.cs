@@ -44,7 +44,7 @@ namespace PedeAqui.Api.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] int pageSize = 20, [FromQuery] int pageNumber = 1)
         {
-            return Ok(_repository.GetAll(null, pageSize, pageNumber));
+            return Ok(_repository.GetAll(pageSize : pageSize, pageNumber: pageNumber));
         }
 
     }

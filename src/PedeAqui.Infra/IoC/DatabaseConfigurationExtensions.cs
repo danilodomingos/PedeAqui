@@ -10,12 +10,13 @@ using MongoDB.Driver;
 using PedeAqui.Core.Entities;
 using PedeAqui.Core.SeedWork.Enums;
 using PedeAqui.Core.ValueObjects;
+using PedeAqui.Infra.IoC.Settings;
 
-namespace PedeAqui.Infra
+namespace PedeAqui.Infra.IoC
 {
     public static class DatabaseConfigurationExtensions
     {
-        public static void AddDatabaseConfiguration(this IServiceCollection services, DatabaseSettings settings)
+        public static void AddDatabase(this IServiceCollection services, DatabaseSettings settings)
         {
             AddConventions();
             AddMappings();

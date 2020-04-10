@@ -1,4 +1,4 @@
-namespace PedeAqui.Infra
+namespace PedeAqui.Infra.IoC.Settings
 {
     public class DatabaseSettings
     {

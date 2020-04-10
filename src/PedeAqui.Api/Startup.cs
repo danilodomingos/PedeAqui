@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -5,9 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PedeAqui.Api.Profiles;
-using PedeAqui.Core.Repositories.Interfaces;
-using PedeAqui.Infra;
-using PedeAqui.Infra.Repositories;
+using PedeAqui.Api.Settings;
+using PedeAqui.Infra.IoC;
 
 namespace PedeAqui.Api
 {
@@ -23,15 +23,17 @@ namespace PedeAqui.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(opts => {
+                    opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
+
             services.AddAutoMapper(c => c.AddProfile<StoreProfile>(), typeof(Startup));
 
-            var databaseSettings = new DatabaseSettings();
-            Configuration.GetSection("DatabaseSettings").Bind(databaseSettings);
-
-            services.AddDatabaseConfiguration(databaseSettings);
+            services.AddDatabase(Configuration.GetDatabaseSettings());
+            services.AddRepositories();
             
-            services.AddScoped<IStoreRepository, StoreRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
