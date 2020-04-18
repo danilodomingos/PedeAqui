@@ -1,4 +1,4 @@
-using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Core.Shared.SeedWork.Enums;
 
 namespace PedeAqui.Api.Models
 {

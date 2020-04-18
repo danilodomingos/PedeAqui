@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using PedeAqui.Core.Shared.Entities;
 
-namespace PedeAqui.Core.Entities
+namespace PedeAqui.Core.Aggregates.Store.Entities
 {
     public class Menu : BaseEntity
     {

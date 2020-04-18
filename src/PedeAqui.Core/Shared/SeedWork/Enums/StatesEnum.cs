@@ -1,4 +1,4 @@
-namespace PedeAqui.Core.SeedWork.Enums
+namespace PedeAqui.Core.Shared.SeedWork.Enums
 {
     public enum StatesEnum
     {

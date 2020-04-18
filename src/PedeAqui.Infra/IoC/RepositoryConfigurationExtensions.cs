@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using PedeAqui.Core.Repositories.Interfaces;
+using PedeAqui.Core.Aggregates.Store.Repositories;
 using PedeAqui.Infra.Repositories;
 
 namespace PedeAqui.Infra.IoC

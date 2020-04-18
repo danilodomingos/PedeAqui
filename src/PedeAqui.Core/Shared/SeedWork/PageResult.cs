@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using PedeAqui.Core.Entities;
+using PedeAqui.Core.Shared.Entities;
 
-namespace PedeAqui.Core.SeedWork
+namespace PedeAqui.Core.Shared.SeedWork
 {
     public class PageResult<TEntity> where TEntity : BaseEntity
     {

@@ -5,11 +5,9 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.IdGenerators;
-using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
-using PedeAqui.Core.Entities;
-using PedeAqui.Core.SeedWork.Enums;
-using PedeAqui.Core.ValueObjects;
+using PedeAqui.Core.Aggregates.Store.Entities;
+using PedeAqui.Core.Shared.Entities;
 using PedeAqui.Infra.IoC.Settings;
 
 namespace PedeAqui.Infra.IoC
@@ -46,21 +44,17 @@ namespace PedeAqui.Infra.IoC
                 cm.AutoMap();
                 cm.MapIdField(p => p.Id);
             });
-
-            BsonClassMap.RegisterClassMap<Store>(cm => {
-                cm.AutoMap();
-            });
-
-            BsonClassMap.RegisterClassMap<MenuItem>(cm => {
-                cm.AutoMap();
-                cm.MapMember(c => c.Type).SetSerializer(new EnumSerializer<ItemTypeEnum>(BsonType.String));
-            });
         }
 
         private static void AddConventions()
         {
-            var conventionPack = new ConventionPack {new CamelCaseElementNameConvention()}; 
-            ConventionRegistry.Register("camelCase", conventionPack, t => true);
+            var conventionPack = new ConventionPack 
+            {
+                new CamelCaseElementNameConvention(), 
+                new EnumRepresentationConvention(BsonType.String)
+            };
+
+            ConventionRegistry.Register("default", conventionPack, t => true);
             BsonSerializer.RegisterIdGenerator(typeof(Guid), CombGuidGenerator.Instance);
         }
     }

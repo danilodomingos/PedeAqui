@@ -1,6 +1,6 @@
-using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Core.Shared.SeedWork.Enums;
 
-namespace PedeAqui.Core.ValueObjects
+namespace PedeAqui.Core.Shared.ValueObjects
 {
     public class Address
     {

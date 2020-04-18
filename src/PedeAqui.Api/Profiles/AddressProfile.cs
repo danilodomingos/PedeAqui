@@ -7,7 +7,7 @@ namespace PedeAqui.Api.Profiles
     {
         public AddressProfile()
         {
-            CreateMap<Address, PedeAqui.Core.ValueObjects.Address>()
+            CreateMap<Address, PedeAqui.Core.Shared.ValueObjects.Address>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

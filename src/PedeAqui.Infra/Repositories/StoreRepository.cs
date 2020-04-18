@@ -1,6 +1,6 @@
 using Mongo.CRUD;
-using PedeAqui.Core.Entities;
-using PedeAqui.Core.Repositories.Interfaces;
+using PedeAqui.Core.Aggregates.Store.Entities;
+using PedeAqui.Core.Aggregates.Store.Repositories;
 
 namespace PedeAqui.Infra.Repositories
 {

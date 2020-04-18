@@ -1,10 +1,10 @@
 using System;
 using System.Linq.Expressions;
-using PedeAqui.Core.Entities;
-using PedeAqui.Core.SeedWork;
-using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Core.Shared.Entities;
+using PedeAqui.Core.Shared.SeedWork;
+using PedeAqui.Core.Shared.SeedWork.Enums;
 
-namespace PedeAqui.Core.Repositories.Interfaces
+namespace PedeAqui.Core.Shared.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : BaseEntity
     {

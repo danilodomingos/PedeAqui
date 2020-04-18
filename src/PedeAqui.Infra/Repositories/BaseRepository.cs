@@ -2,10 +2,11 @@ using System;
 using System.Linq.Expressions;
 using Mongo.CRUD;
 using MongoDB.Driver;
-using PedeAqui.Core.Entities;
-using PedeAqui.Core.Repositories.Interfaces;
-using PedeAqui.Core.SeedWork;
-using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Core.Aggregates.Store.Repositories;
+using PedeAqui.Core.Shared.Entities;
+using PedeAqui.Core.Shared.Repositories;
+using PedeAqui.Core.Shared.SeedWork;
+using PedeAqui.Core.Shared.SeedWork.Enums;
 using PedeAqui.Infra.Helper;
 
 namespace PedeAqui.Infra.Repositories

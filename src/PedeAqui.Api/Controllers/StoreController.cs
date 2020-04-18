@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedeAqui.Api.Models.Request;
 using PedeAqui.Api.Utils;
-using PedeAqui.Core.Entities;
-using PedeAqui.Core.Repositories.Interfaces;
+using PedeAqui.Core.Aggregates.Store.Entities;
+using PedeAqui.Core.Aggregates.Store.Repositories;
 
 namespace PedeAqui.Api.Controllers
 {
@@ -25,7 +25,7 @@ namespace PedeAqui.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStore([FromBody] StorePostRequest store)
+        public IActionResult CreateStore([FromBody] PostStoreRequest store)
         {
             var model = _mapper.Map<Store>(store);
             var location = this.HttpContext.GetLocation(model.Id);
@@ -59,7 +59,7 @@ namespace PedeAqui.Api.Controllers
         }
 
         [HttpPatch("{id:guid}")]
-        public IActionResult Update([FromRoute] Guid id, [FromBody] StorePatchRequest request)
+        public IActionResult Update([FromRoute] Guid id, [FromBody] PatchStoreRequest request)
         {   
             var actual = _repository.GetById(id);
 

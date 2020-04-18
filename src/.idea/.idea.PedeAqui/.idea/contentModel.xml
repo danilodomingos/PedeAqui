@@ -7,22 +7,29 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="PedeAqui.Api" t="IncludeRecursive">
         <e p="Controllers" t="Include">
+          <e p="CustomerController.cs" t="Include" />
+          <e p="MenuController.cs" t="Include" />
           <e p="StoreController.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Address.cs" t="Include" />
+          <e p="Customer.cs" t="Include" />
           <e p="Menu.cs" t="Include" />
           <e p="MenuItem.cs" t="Include" />
           <e p="Request" t="Include">
-            <e p="StoreGetRequest.cs" t="Include" />
-            <e p="StorePatchRequest.cs" t="Include" />
-            <e p="StorePostRequest.cs" t="Include" />
+            <e p="Customer" t="Include">
+              <e p="PostCustomerRequest.cs" t="Include" />
+            </e>
+            <e p="PatchStoreRequest.cs" t="Include" />
+            <e p="PostMenuRequest.cs" t="Include" />
+            <e p="PostStoreRequest.cs" t="Include" />
           </e>
           <e p="Store.cs" t="Include" />
         </e>
         <e p="PedeAqui.Api.csproj" t="IncludeRecursive" />
         <e p="Profiles" t="Include">
           <e p="AddressProfile.cs" t="Include" />
+          <e p="CustomerProfile.cs" t="Include" />
           <e p="MenuItemProfile.cs" t="Include" />
           <e p="MenuProfile.cs" t="Include" />
           <e p="StoreProfile.cs" t="Include" />
@@ -51,29 +58,48 @@
         </e>
       </e>
       <e p="PedeAqui.Core" t="IncludeRecursive">
-        <e p="Entities" t="Include">
-          <e p="BaseEntity.cs" t="Include" />
-          <e p="Store.cs" t="Include" />
+        <e p="Aggregates" t="Include">
+          <e p="Customer" t="Include">
+            <e p="Entities" t="Include">
+              <e p="Customer.cs" t="Include" />
+            </e>
+            <e p="Repositories" t="Include">
+              <e p="Interfaces" t="Include">
+                <e p="ICustomerRepository.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Store" t="Include">
+            <e p="Entities" t="Include">
+              <e p="Menu.cs" t="Include" />
+              <e p="MenuItem.cs" t="Include" />
+              <e p="Store.cs" t="Include" />
+            </e>
+            <e p="Repositories" t="Include">
+              <e p="IStoreRepository.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="PedeAqui.Core.csproj" t="IncludeRecursive" />
-        <e p="Repositories" t="Include">
-          <e p="Interfaces" t="Include">
+        <e p="Shared" t="Include">
+          <e p="Entities" t="Include">
+            <e p="BaseEntity.cs" t="Include" />
+          </e>
+          <e p="Repositories" t="Include">
             <e p="IBaseRepository.cs" t="Include" />
-            <e p="IStoreRepository.cs" t="Include" />
           </e>
-        </e>
-        <e p="SeedWork" t="Include">
-          <e p="Enums" t="Include">
-            <e p="ItemTypeEnum.cs" t="Include" />
-            <e p="SortModeEnum.cs" t="Include" />
-            <e p="StatesEnum.cs" t="Include" />
+          <e p="SeedWork" t="Include">
+            <e p="Enums" t="Include">
+              <e p="GenderEnum.cs" t="Include" />
+              <e p="ItemTypeEnum.cs" t="Include" />
+              <e p="SortModeEnum.cs" t="Include" />
+              <e p="StatesEnum.cs" t="Include" />
+            </e>
+            <e p="PageResult.cs" t="Include" />
           </e>
-          <e p="PageResult.cs" t="Include" />
-        </e>
-        <e p="ValueObjects" t="Include">
-          <e p="Address.cs" t="Include" />
-          <e p="Menu.cs" t="Include" />
-          <e p="MenuItem.cs" t="Include" />
+          <e p="ValueObjects" t="Include">
+            <e p="Address.cs" t="Include" />
+          </e>
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
@@ -98,6 +124,7 @@
         <e p="PedeAqui.Infra.csproj" t="IncludeRecursive" />
         <e p="Repositories" t="Include">
           <e p="BaseRepository.cs" t="Include" />
+          <e p="CustomerRepository.cs" t="Include" />
           <e p="StoreRepository.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />

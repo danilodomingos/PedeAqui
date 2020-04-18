@@ -1,6 +1,7 @@
-using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Core.Shared.Entities;
+using PedeAqui.Core.Shared.SeedWork.Enums;
 
-namespace PedeAqui.Core.Entities
+namespace PedeAqui.Core.Aggregates.Store.Entities
 {
     public class MenuItem : BaseEntity
     {

@@ -1,7 +1,7 @@
 using System;
 using Mongo.CRUD.Enums;
 using Mongo.CRUD.Models;
-using PedeAqui.Core.SeedWork.Enums;
+using PedeAqui.Core.Shared.SeedWork.Enums;
 
 namespace PedeAqui.Infra.Helper
 {

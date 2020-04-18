@@ -2,7 +2,7 @@ using System;
 
 namespace PedeAqui.Api.Models.Request
 {
-    public class MenuPostRequest
+    public class PostMenuRequest
     {
         public Guid StoreId { get; set; }
     }
