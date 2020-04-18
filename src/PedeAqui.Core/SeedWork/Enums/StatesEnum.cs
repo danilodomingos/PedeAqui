@@ -1,0 +1,34 @@
+namespace PedeAqui.Core.SeedWork.Enums
+{
+    public enum StatesEnum
+    {
+        None,
+        Ac,
+        Al,
+        Am,
+        Ap,
+        Ba,
+        Ce,
+        Df,
+        Es,
+        Go,
+        Ma,
+        Mg,
+        Ms,
+        Mt,
+        Pa,
+        Pb,
+        Pe,
+        Pi,
+        Pr,
+        Rj,
+        Rn,
+        Ro,
+        Rr,
+        Rs,
+        Sc,
+        Se,
+        Sp,
+        To
+    }
+}

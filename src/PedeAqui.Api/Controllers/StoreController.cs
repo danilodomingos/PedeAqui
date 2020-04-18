@@ -34,17 +34,42 @@ namespace PedeAqui.Api.Controllers
             return Created(location, model);
         }
 
-        [HttpGet]
-        [Route("{id:guid}")]
+        [HttpGet("{id:guid}")]
         public IActionResult Get([FromRoute] Guid id)
         {
-            return Ok(_repository.GetById(id));
+            var model = _repository.GetById(id);
+
+            if(model == null)
+                return NotFound();
+
+            return Ok(model);
         }
 
         [HttpGet]
         public IActionResult GetAll([FromQuery] int pageSize = 20, [FromQuery] int pageNumber = 1)
         {
             return Ok(_repository.GetAll(pageSize : pageSize, pageNumber: pageNumber));
+        }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            _repository.Delete(id);
+            return NoContent();
+        }
+
+        [HttpPatch("{id:guid}")]
+        public IActionResult Update([FromRoute] Guid id, [FromBody] StorePatchRequest request)
+        {   
+            var actual = _repository.GetById(id);
+
+            if(actual == null)
+                return NotFound();
+
+            _mapper.Map(request, actual);
+            //_repository.Update(actual);
+
+            return Ok(actual);
         }
 
     }

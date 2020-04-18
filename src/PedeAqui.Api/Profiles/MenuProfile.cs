@@ -7,7 +7,8 @@ namespace PedeAqui.Api.Profiles
     {
         public MenuProfile()
         {
-            CreateMap<Menu, PedeAqui.Core.ValueObjects.Menu>();
+            CreateMap<Menu, PedeAqui.Core.Entities.Menu>()
+                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

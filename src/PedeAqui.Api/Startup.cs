@@ -28,11 +28,14 @@ namespace PedeAqui.Api
                     opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
 
-            services.AddAutoMapper(c => c.AddProfile<StoreProfile>(), typeof(Startup));
+            services.AddAutoMapper(config => {
+                config.AllowNullCollections = true;
+                config.AddProfile<StoreProfile>();
+
+            }, typeof(Startup));
 
             services.AddDatabase(Configuration.GetDatabaseSettings());
             services.AddRepositories();
-            
             
         }
 

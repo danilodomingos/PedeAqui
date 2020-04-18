@@ -12,20 +12,20 @@ namespace PedeAqui.Infra.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity, new()
     {
-        protected readonly IMongoCRUD<TEntity> _dbContext;
+        protected readonly IMongoCRUD<TEntity> DbContext;
 
         public BaseRepository(IMongoCRUD<TEntity> dbContext)
         {
-            _dbContext = dbContext;
+            DbContext = dbContext;
         }
         public void Add(TEntity entity)
         {
-            _dbContext.Collection.InsertOne(entity);
+            DbContext.Collection.InsertOne(entity);
         }
 
         public void Delete(Guid id)
         {
-            _dbContext.Delete(id);
+            DbContext.Delete(id);
         }
 
         public PageResult<TEntity> GetAll(Expression<Func<TEntity, bool>> spec, int pageSize = 20, int pageNumber = 1, 
@@ -37,7 +37,7 @@ namespace PedeAqui.Infra.Repositories
             }
 
             var options = PaginationHelper.BuildOptions(pageSize, pageNumber, sortField, sort);
-            var search =_dbContext.Search(spec, options);
+            var search =DbContext.Search(spec, options);
             var hasNextPage = PaginationHelper.HasNextPage(pageSize, pageNumber, search.Count);
 
             return new PageResult<TEntity>(search.Documents, pageNumber, pageSize, search.Count, hasNextPage);
@@ -46,13 +46,13 @@ namespace PedeAqui.Infra.Repositories
         public TEntity GetById(Guid id)
         {
             Expression<Func<TEntity, bool>> exp = p => p.Id == id;
-            return _dbContext.Collection.Find(exp)?.FirstOrDefault();
+            return DbContext.Collection.Find(exp)?.FirstOrDefault();
         }
 
         public void Update(TEntity entity)
         {
             Expression<Func<TEntity, bool>> exp = p => p.Id == entity.Id;
-            _dbContext.UpdateByQuery(exp, entity);
+            DbContext.UpdateByQuery(exp, entity);
         }
     }
 }

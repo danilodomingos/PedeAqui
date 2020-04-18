@@ -25,7 +25,7 @@ namespace PedeAqui.Infra.IoC
                 return new MongoClient(settings.Connection);
             });
 
-            services.AddScoped<IMongoDatabase>(p => {
+            services.AddScoped(p => {
                 var client = p.GetService<IMongoClient>();
                 return client.GetDatabase(settings.Name);
             });

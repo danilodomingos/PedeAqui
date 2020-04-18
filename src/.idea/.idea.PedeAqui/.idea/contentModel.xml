@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_PedeAqui.1049114724.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="PedeAqui.Api" t="IncludeRecursive">
+        <e p="Controllers" t="Include">
+          <e p="StoreController.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Address.cs" t="Include" />
+          <e p="Menu.cs" t="Include" />
+          <e p="MenuItem.cs" t="Include" />
+          <e p="Request" t="Include">
+            <e p="StoreGetRequest.cs" t="Include" />
+            <e p="StorePatchRequest.cs" t="Include" />
+            <e p="StorePostRequest.cs" t="Include" />
+          </e>
+          <e p="Store.cs" t="Include" />
+        </e>
+        <e p="PedeAqui.Api.csproj" t="IncludeRecursive" />
+        <e p="Profiles" t="Include">
+          <e p="AddressProfile.cs" t="Include" />
+          <e p="MenuItemProfile.cs" t="Include" />
+          <e p="MenuProfile.cs" t="Include" />
+          <e p="StoreProfile.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Settings" t="Include">
+          <e p="AppSettingsBinderExtensions.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Utils" t="Include">
+          <e p="AutoMapperExtensions.cs" t="Include" />
+          <e p="UrlUtils.cs" t="Include" />
+        </e>
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="PedeAqui.Api.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="PedeAqui.Core" t="IncludeRecursive">
+        <e p="Entities" t="Include">
+          <e p="BaseEntity.cs" t="Include" />
+          <e p="Store.cs" t="Include" />
+        </e>
+        <e p="PedeAqui.Core.csproj" t="IncludeRecursive" />
+        <e p="Repositories" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="IBaseRepository.cs" t="Include" />
+            <e p="IStoreRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="SeedWork" t="Include">
+          <e p="Enums" t="Include">
+            <e p="ItemTypeEnum.cs" t="Include" />
+            <e p="SortModeEnum.cs" t="Include" />
+            <e p="StatesEnum.cs" t="Include" />
+          </e>
+          <e p="PageResult.cs" t="Include" />
+        </e>
+        <e p="ValueObjects" t="Include">
+          <e p="Address.cs" t="Include" />
+          <e p="Menu.cs" t="Include" />
+          <e p="MenuItem.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="PedeAqui.Core.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="PedeAqui.Infra" t="IncludeRecursive">
+        <e p="Helper" t="Include">
+          <e p="PaginationHelper.cs" t="Include" />
+        </e>
+        <e p="IoC" t="Include">
+          <e p="DatabaseConfigurationExtensions.cs" t="Include" />
+          <e p="RepositoryConfigurationExtensions.cs" t="Include" />
+          <e p="Settings" t="Include">
+            <e p="DatabaseSettings.cs" t="Include" />
+          </e>
+        </e>
+        <e p="PedeAqui.Infra.csproj" t="IncludeRecursive" />
+        <e p="Repositories" t="Include">
+          <e p="BaseRepository.cs" t="Include" />
+          <e p="StoreRepository.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="PedeAqui.Infra.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="PedeAqui.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
