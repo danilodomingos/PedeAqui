@@ -40,7 +40,7 @@ namespace PedeAqui.Api.Controllers
             var model = _repository.GetById(id);
 
             if(model == null)
-                return NotFound();
+                return NotFound(model);
 
             return Ok(model);
         }
@@ -64,7 +64,7 @@ namespace PedeAqui.Api.Controllers
             var actual = _repository.GetById(id);
 
             if(actual == null)
-                return NotFound();
+                return NotFound(actual);
 
             _mapper.Map(request, actual);
             //_repository.Update(actual);

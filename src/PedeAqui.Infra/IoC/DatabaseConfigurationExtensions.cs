@@ -6,6 +6,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
+using PedeAqui.Core.Aggregates.Customer.Entities;
 using PedeAqui.Core.Aggregates.Store.Entities;
 using PedeAqui.Core.Shared.Entities;
 using PedeAqui.Infra.IoC.Settings;
@@ -19,21 +20,30 @@ namespace PedeAqui.Infra.IoC
             AddConventions();
             AddMappings();
 
-            services.AddSingleton<IMongoClient, MongoClient>(p => {
+            services.AddSingleton<IMongoClient, MongoClient>(p =>
+            {
                 return new MongoClient(settings.Connection);
             });
 
-            services.AddScoped(p => {
+            services.AddScoped(p =>
+            {
                 var client = p.GetService<IMongoClient>();
                 return client.GetDatabase(settings.Name);
             });
 
-            services.AddScoped<IMongoCRUD<Store>>(p => 
+            services.AddScoped<IMongoCRUD<Store>>(p =>
             {
                 var mongoClient = p.GetService<IMongoClient>();
                 var database = p.GetService<IMongoDatabase>();
                 return new MongoCRUD<Store>(mongoClient, database);
-            });    
+            });
+
+            services.AddScoped<IMongoCRUD<Customer>>(p =>
+            {
+                var mongoClient = p.GetService<IMongoClient>();
+                var database = p.GetService<IMongoDatabase>();
+                return new MongoCRUD<Customer>(mongoClient, database);
+            });
 
         }
 
@@ -48,9 +58,9 @@ namespace PedeAqui.Infra.IoC
 
         private static void AddConventions()
         {
-            var conventionPack = new ConventionPack 
+            var conventionPack = new ConventionPack
             {
-                new CamelCaseElementNameConvention(), 
+                new CamelCaseElementNameConvention(),
                 new EnumRepresentationConvention(BsonType.String)
             };
 
