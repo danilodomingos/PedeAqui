@@ -11,13 +11,13 @@ namespace PedeAqui.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StoreController : ControllerBase
+    public class StoresController : ControllerBase
     {
-        private readonly ILogger<StoreController> _logger;
+        private readonly ILogger<StoresController> _logger;
         private readonly IMapper _mapper;
         private readonly IStoreRepository _repository;
 
-        public StoreController(ILogger<StoreController> logger, IStoreRepository repository, IMapper mapper)
+        public StoresController(ILogger<StoresController> logger, IStoreRepository repository, IMapper mapper)
         {
             _logger = logger;
             _repository = repository;

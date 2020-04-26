@@ -10,13 +10,13 @@ namespace PedeAqui.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CustomerController : ControllerBase
+    public class CustomersController : ControllerBase
     {
-        private readonly ILogger<CustomerController> _logger;
+        private readonly ILogger<CustomersController> _logger;
         private readonly IMapper _mapper;
         private readonly ICustomerRepository _repository;
 
-        public CustomerController(ILogger<CustomerController> logger, ICustomerRepository repository, IMapper mapper)
+        public CustomersController(ILogger<CustomersController> logger, ICustomerRepository repository, IMapper mapper)
         {
             _logger = logger;
             _repository = repository;
