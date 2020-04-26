@@ -1,5 +1,5 @@
 using AutoMapper;
-using PedeAqui.Api.Models.Request;
+using PedeAqui.Api.Models.Request.Store;
 using PedeAqui.Api.Utils;
 using PedeAqui.Core.Aggregates.Store.Entities;
 

@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PedeAqui.Api.Models.Request;
+using PedeAqui.Api.Models.Request.Store;
 using PedeAqui.Api.Utils;
 using PedeAqui.Core.Aggregates.Store.Entities;
 using PedeAqui.Core.Aggregates.Store.Repositories;
