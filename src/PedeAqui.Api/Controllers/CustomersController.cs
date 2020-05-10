@@ -24,7 +24,7 @@ namespace PedeAqui.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStore([FromBody] PostCustomerRequest store)
+        public IActionResult CreateCustomer([FromBody] PostCustomerRequest store)
         {
             var model = _mapper.Map<Core.Aggregates.Customer.Entities.Customer>(store);
             var location = this.HttpContext.GetLocation(model.Id);
