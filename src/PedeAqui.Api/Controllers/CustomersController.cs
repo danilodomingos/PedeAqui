@@ -30,6 +30,7 @@ namespace PedeAqui.Api.Controllers
             var location = this.HttpContext.GetLocation(model.Id);
 
             _repository.Add(model);
+            
             return Created(location, model);
         }
 
@@ -38,9 +39,11 @@ namespace PedeAqui.Api.Controllers
         {
             var model = _repository.GetById(id);
 
-            if(model == null)
+            if (model == null)
+            {
                 return NotFound();
-
+            }
+            
             return Ok(model);
         }
 

@@ -3,7 +3,7 @@ using PedeAqui.Core.Aggregates.Customer.Repositories;
 using PedeAqui.Core.Aggregates.Store.Repositories;
 using PedeAqui.Infra.Repositories;
 
-namespace PedeAqui.Infra.IoC
+namespace PedeAqui.Infra.IoC.Extensions
 {
     public static class RepositoryConfigurationExtensions
     {

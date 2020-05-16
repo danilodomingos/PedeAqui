@@ -13,12 +13,12 @@ namespace PedeAqui.Api.Settings
             return databaseSettings;
         }
 
-        public static RabbitMQSettings GetRabbitMQSettings(this IConfiguration config)
+        public static RabbitMqSettings GetRabbitMqSettings(this IConfiguration config)
         {
-            var rabbitMQSettings = new RabbitMQSettings();
-            config.GetSection("RabbitMQSettings").Bind(rabbitMQSettings);
+            var rabbitMqSettings = new RabbitMqSettings();
+            config.GetSection("RabbitMQSettings").Bind(rabbitMqSettings);
 
-            return rabbitMQSettings;
+            return rabbitMqSettings;
         }
     }
 }

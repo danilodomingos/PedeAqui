@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PedeAqui.Api.Profiles;
 using PedeAqui.Api.Settings;
-using PedeAqui.Infra.IoC;
 using PedeAqui.Infra.IoC.Extensions;
 
 namespace PedeAqui.Api
@@ -35,7 +34,7 @@ namespace PedeAqui.Api
             }, typeof(Startup));
 
             services.AddDatabase(Configuration.GetDatabaseSettings());
-            services.AddRabbitMQ(Configuration.GetRabbitMQSettings());
+            services.AddRabbitMq(Configuration.GetRabbitMqSettings());
             services.AddRepositories();
             services.AddPublishers();
             

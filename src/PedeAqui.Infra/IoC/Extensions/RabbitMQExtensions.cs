@@ -2,11 +2,11 @@ using Microsoft.Extensions.DependencyInjection;
 using PedeAqui.Infra.IoC.Settings;
 using RabbitMQ.Client;
 
-namespace PedeAqui.Infra.IoC
+namespace PedeAqui.Infra.IoC.Extensions
 {
-    public static class RabbitMQExtensions
+    public static class RabbitMqExtensions
     {
-        public static void AddRabbitMQ(this IServiceCollection services, RabbitMQSettings settings)
+        public static void AddRabbitMq(this IServiceCollection services, RabbitMqSettings settings)
         {
             services.AddSingleton<RabbitMQ.Client.IConnection>(provider =>
             {

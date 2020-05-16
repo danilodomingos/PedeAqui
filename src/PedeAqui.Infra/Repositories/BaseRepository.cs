@@ -2,7 +2,6 @@ using System;
 using System.Linq.Expressions;
 using Mongo.CRUD;
 using MongoDB.Driver;
-using PedeAqui.Core.Aggregates.Store.Repositories;
 using PedeAqui.Core.Shared.Entities;
 using PedeAqui.Core.Shared.Repositories;
 using PedeAqui.Core.Shared.SeedWork;

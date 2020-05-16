@@ -11,7 +11,7 @@ using PedeAqui.Core.Aggregates.Store.Entities;
 using PedeAqui.Core.Shared.Entities;
 using PedeAqui.Infra.IoC.Settings;
 
-namespace PedeAqui.Infra.IoC
+namespace PedeAqui.Infra.IoC.Extensions
 {
     public static class DatabaseConfigurationExtensions
     {
