@@ -4,6 +4,6 @@ namespace PedeAqui.Infra.Publishers.Interfaces
 {
     public interface IOrderPublisher
     {
-         void OrderCreated(PostOrderRequest request);
+        void OrderCreated(PostOrderRequest request);
     }
 }

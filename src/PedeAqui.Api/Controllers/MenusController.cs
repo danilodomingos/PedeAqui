@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedeAqui.Api.Models.Request.Store;
 using PedeAqui.Api.Utils;
-using PedeAqui.Core.Aggregates.Store.Entities;
-using PedeAqui.Core.Aggregates.Store.Repositories;
+using PedeAqui.Core.Stores.Entities;
+using PedeAqui.Core.Stores.Repositories;
 
 namespace PedeAqui.Api.Controllers
 {

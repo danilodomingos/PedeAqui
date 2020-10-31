@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace PedeAqui.Api.Models.Request.Store
 {
-    public class PostStoreRequest : Models.Store
+    public class PostStoreRequest : StoreModel
     {
-        public List<Menu> Menus { get; set; }
+        public List<MenuModel> Menus { get; set; }
     }
 }

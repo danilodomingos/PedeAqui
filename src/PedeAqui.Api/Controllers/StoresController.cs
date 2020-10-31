@@ -1,11 +1,11 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedeAqui.Api.Models.Request.Store;
 using PedeAqui.Api.Utils;
-using PedeAqui.Core.Aggregates.Store.Entities;
-using PedeAqui.Core.Aggregates.Store.Repositories;
+using PedeAqui.Core.Stores.Entities;
+using PedeAqui.Core.Stores.Repositories;
+using System;
 
 namespace PedeAqui.Api.Controllers
 {
@@ -39,7 +39,7 @@ namespace PedeAqui.Api.Controllers
         {
             var model = _repository.GetById(id);
 
-            if(model == null)
+            if (model == null)
                 return NotFound(model);
 
             return Ok(model);
@@ -48,7 +48,7 @@ namespace PedeAqui.Api.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] int pageSize = 20, [FromQuery] int pageNumber = 1)
         {
-            return Ok(_repository.GetAll(pageSize : pageSize, pageNumber: pageNumber));
+            return Ok(_repository.GetAll(pageSize: pageSize, pageNumber: pageNumber));
         }
 
         [HttpDelete("{id:guid}")]
@@ -60,10 +60,10 @@ namespace PedeAqui.Api.Controllers
 
         [HttpPatch("{id:guid}")]
         public IActionResult Update([FromRoute] Guid id, [FromBody] PatchStoreRequest request)
-        {   
+        {
             var actual = _repository.GetById(id);
 
-            if(actual == null)
+            if (actual == null)
                 return NotFound(actual);
 
             _mapper.Map(request, actual);

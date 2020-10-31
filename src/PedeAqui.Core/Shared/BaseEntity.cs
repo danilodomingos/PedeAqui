@@ -1,6 +1,6 @@
 using System;
 
-namespace PedeAqui.Core.Shared.Entities
+namespace PedeAqui.Core.Shared
 {
     public class BaseEntity
     {

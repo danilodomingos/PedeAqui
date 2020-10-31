@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using PedeAqui.Core.Shared.Entities;
 
 namespace PedeAqui.Core.Shared.SeedWork
 {

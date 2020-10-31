@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Extensions.DependencyInjection;
 using Mongo.CRUD;
 using MongoDB.Bson;
@@ -6,10 +5,11 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
-using PedeAqui.Core.Aggregates.Customer.Entities;
-using PedeAqui.Core.Aggregates.Store.Entities;
-using PedeAqui.Core.Shared.Entities;
+using PedeAqui.Core.Customers.Entities;
+using PedeAqui.Core.Shared;
+using PedeAqui.Core.Stores.Entities;
 using PedeAqui.Infra.IoC.Settings;
+using System;
 
 namespace PedeAqui.Infra.IoC.Extensions
 {

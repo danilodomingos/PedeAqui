@@ -1,13 +1,13 @@
 using Mongo.CRUD;
-using PedeAqui.Core.Aggregates.Customer.Entities;
-using PedeAqui.Core.Aggregates.Customer.Repositories;
+using PedeAqui.Core.Customers.Entities;
+using PedeAqui.Core.Customers.Repositories;
 
 namespace PedeAqui.Infra.Repositories
 {
-    public class CustomerRepository :  BaseRepository<Customer>, ICustomerRepository
+    public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
         public CustomerRepository(IMongoCRUD<Customer> dbContext) : base(dbContext)
-        {   
+        {
         }
     }
 }

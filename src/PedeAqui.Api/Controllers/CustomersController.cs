@@ -1,10 +1,11 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedeAqui.Api.Models.Request.Customer;
 using PedeAqui.Api.Utils;
-using PedeAqui.Core.Aggregates.Customer.Repositories;
+using PedeAqui.Core.Customers.Entities;
+using PedeAqui.Core.Customers.Repositories;
+using System;
 
 namespace PedeAqui.Api.Controllers
 {
@@ -24,13 +25,13 @@ namespace PedeAqui.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCustomer([FromBody] PostCustomerRequest store)
+        public IActionResult CreateCustomer([FromBody] PostCustomerRequest customer)
         {
-            var model = _mapper.Map<Core.Aggregates.Customer.Entities.Customer>(store);
+            var model = _mapper.Map<Customer>(customer);
             var location = this.HttpContext.GetLocation(model.Id);
 
             _repository.Add(model);
-            
+
             return Created(location, model);
         }
 
@@ -43,14 +44,14 @@ namespace PedeAqui.Api.Controllers
             {
                 return NotFound();
             }
-            
+
             return Ok(model);
         }
 
         [HttpGet]
         public IActionResult GetAll([FromQuery] int pageSize = 20, [FromQuery] int pageNumber = 1)
         {
-            return Ok(_repository.GetAll(pageSize : pageSize, pageNumber: pageNumber));
+            return Ok(_repository.GetAll(pageSize: pageSize, pageNumber: pageNumber));
         }
 
     }

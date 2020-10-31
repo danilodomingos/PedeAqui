@@ -1,5 +1,6 @@
 using AutoMapper;
 using PedeAqui.Api.Models;
+using PedeAqui.Core.Shared.ValueObjects;
 
 namespace PedeAqui.Api.Profiles
 {
@@ -7,7 +8,7 @@ namespace PedeAqui.Api.Profiles
     {
         public AddressProfile()
         {
-            CreateMap<Address, PedeAqui.Core.Shared.ValueObjects.Address>()
+            CreateMap<AddressModel, Address>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

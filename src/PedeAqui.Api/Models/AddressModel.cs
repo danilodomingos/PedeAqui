@@ -2,7 +2,7 @@ using PedeAqui.Core.Shared.SeedWork.Enums;
 
 namespace PedeAqui.Api.Models
 {
-    public class Address
+    public class AddressModel
     {
         public StatesEnum? State { get; set; }
         public string City { get; set; }

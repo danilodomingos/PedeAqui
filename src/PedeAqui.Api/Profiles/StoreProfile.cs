@@ -1,7 +1,7 @@
 using AutoMapper;
 using PedeAqui.Api.Models.Request.Store;
 using PedeAqui.Api.Utils;
-using PedeAqui.Core.Aggregates.Store.Entities;
+using PedeAqui.Core.Stores.Entities;
 
 namespace PedeAqui.Api.Profiles
 {

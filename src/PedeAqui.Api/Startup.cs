@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PedeAqui.Api.Profiles;
 using PedeAqui.Api.Settings;
 using PedeAqui.Infra.IoC.Extensions;
+using System.Text.Json.Serialization;
 
 namespace PedeAqui.Api
 {
@@ -23,11 +23,13 @@ namespace PedeAqui.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddJsonOptions(opts => {
+                .AddJsonOptions(opts =>
+                {
                     opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            });
+                });
 
-            services.AddAutoMapper(config => {
+            services.AddAutoMapper(config =>
+            {
                 config.AllowNullCollections = true;
                 config.AddProfile<StoreProfile>();
 
@@ -37,7 +39,7 @@ namespace PedeAqui.Api
             services.AddRabbitMq(Configuration.GetRabbitMqSettings());
             services.AddRepositories();
             services.AddPublishers();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

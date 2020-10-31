@@ -1,12 +1,11 @@
-using System;
-using System.Linq.Expressions;
 using Mongo.CRUD;
 using MongoDB.Driver;
-using PedeAqui.Core.Shared.Entities;
-using PedeAqui.Core.Shared.Repositories;
+using PedeAqui.Core.Shared;
 using PedeAqui.Core.Shared.SeedWork;
 using PedeAqui.Core.Shared.SeedWork.Enums;
 using PedeAqui.Infra.Helper;
+using System;
+using System.Linq.Expressions;
 
 namespace PedeAqui.Infra.Repositories
 {
@@ -28,16 +27,16 @@ namespace PedeAqui.Infra.Repositories
             DbContext.Delete(id);
         }
 
-        public PageResult<TEntity> GetAll(Expression<Func<TEntity, bool>> spec, int pageSize = 20, int pageNumber = 1, 
+        public PageResult<TEntity> GetAll(Expression<Func<TEntity, bool>> spec, int pageSize = 20, int pageNumber = 1,
             string sortField = null, SortModeEnum sort = SortModeEnum.Asc)
         {
-            if(spec == null)
+            if (spec == null)
             {
                 spec = p => p.Id != null;
             }
 
             var options = PaginationHelper.BuildOptions(pageSize, pageNumber, sortField, sort);
-            var search =DbContext.Search(spec, options);
+            var search = DbContext.Search(spec, options);
             var hasNextPage = PaginationHelper.HasNextPage(pageSize, pageNumber, search.Count);
 
             return new PageResult<TEntity>(search.Documents, pageNumber, pageSize, search.Count, hasNextPage);

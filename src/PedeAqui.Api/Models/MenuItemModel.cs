@@ -2,7 +2,7 @@ using PedeAqui.Core.Shared.SeedWork.Enums;
 
 namespace PedeAqui.Api.Models
 {
-    public class MenuItem
+    public class MenuItemModel
     {
         public string Name { get; set; }
         public string PhotoUrl { get; set; }

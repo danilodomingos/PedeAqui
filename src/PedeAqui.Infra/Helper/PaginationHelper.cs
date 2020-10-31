@@ -1,7 +1,7 @@
-using System;
 using Mongo.CRUD.Enums;
 using Mongo.CRUD.Models;
 using PedeAqui.Core.Shared.SeedWork.Enums;
+using System;
 
 namespace PedeAqui.Infra.Helper
 {
@@ -9,11 +9,12 @@ namespace PedeAqui.Infra.Helper
     {
         public static SearchOptions BuildOptions(int pageSize, int pageNumber, string sortField, SortModeEnum sort)
         {
-            return new SearchOptions() { 
-                PageSize = pageSize, 
+            return new SearchOptions()
+            {
+                PageSize = pageSize,
                 PageNumber = pageNumber,
                 SortField = sortField,
-                SortMode = (SortMode) Enum.Parse(typeof(SortMode), sort.ToString(), true)
+                SortMode = (SortMode)Enum.Parse(typeof(SortMode), sort.ToString(), true)
             };
         }
 
@@ -22,8 +23,9 @@ namespace PedeAqui.Infra.Helper
             var hasData = (count > 0);
             var hasNextPage = false;
 
-            if(hasData) {
-                hasNextPage  = (pageSize * pageNumber) < count;
+            if (hasData)
+            {
+                hasNextPage = (pageSize * pageNumber) < count;
             }
 
             return hasNextPage;

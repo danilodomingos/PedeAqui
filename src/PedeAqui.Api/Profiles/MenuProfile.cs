@@ -1,5 +1,6 @@
 using AutoMapper;
 using PedeAqui.Api.Models;
+using PedeAqui.Core.Stores.Entities;
 
 namespace PedeAqui.Api.Profiles
 {
@@ -7,7 +8,7 @@ namespace PedeAqui.Api.Profiles
     {
         public MenuProfile()
         {
-            CreateMap<Menu, PedeAqui.Core.Aggregates.Store.Entities.Menu>()
+            CreateMap<MenuModel, Menu>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

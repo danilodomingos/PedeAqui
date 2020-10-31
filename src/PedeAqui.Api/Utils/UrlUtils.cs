@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace PedeAqui.Api.Utils
 {
-    public  static class UrlUtils
+    public static class UrlUtils
     {
         public static string GetLocation(this HttpContext httpContext, object id)
         {

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
-using PedeAqui.Core.Aggregates.Customer.Repositories;
-using PedeAqui.Core.Aggregates.Store.Repositories;
+using PedeAqui.Core.Customers.Repositories;
+using PedeAqui.Core.Stores.Repositories;
 using PedeAqui.Infra.Repositories;
 
 namespace PedeAqui.Infra.IoC.Extensions

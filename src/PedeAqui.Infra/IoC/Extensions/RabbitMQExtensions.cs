@@ -17,13 +17,18 @@ namespace PedeAqui.Infra.IoC.Extensions
                     VirtualHost = settings.VirtualHost,
                     HostName = settings.HostName
                 };
-                
+
                 return factory.CreateConnection();
             });
 
-            services.AddScoped<IModel>(provider => {
+            services.AddScoped<IModel>(provider =>
+            {
+
                 var connection = provider.GetService<RabbitMQ.Client.IConnection>();
-                return connection.CreateModel();
+                var channel = connection.CreateModel();
+                channel.ConfirmSelect();
+
+                return channel;
             });
         }
     }
