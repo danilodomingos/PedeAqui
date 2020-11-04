@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedeAqui.Api.Models.Request.Store;
+using PedeAqui.Api.Models.Response.Store;
 using PedeAqui.Api.Utils;
 using PedeAqui.Core.Stores.Entities;
 using PedeAqui.Core.Stores.Repositories;
@@ -25,13 +26,16 @@ namespace PedeAqui.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateStore([FromBody] PostStoreRequest store)
+        public IActionResult Post([FromBody] PostStoreRequest store)
         {
             var model = _mapper.Map<Store>(store);
             var location = this.HttpContext.GetLocation(model.Id);
 
             _repository.Add(model);
-            return Created(location, model);
+
+            var response = _mapper.Map<PostStoreResponse>(model);
+
+            return Created(location, response);
         }
 
         [HttpGet("{id:guid}")]
@@ -42,7 +46,7 @@ namespace PedeAqui.Api.Controllers
             if (model == null)
                 return NotFound(model);
 
-            return Ok(model);
+            return Ok(_mapper.Map<GetStoreResponse>(model));
         }
 
         [HttpGet]

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace PedeAqui.Core.Shared.SeedWork
 {
-    public class PageResult<TEntity> where TEntity : BaseEntity
+    public class PageResult<TEntity> where TEntity : class
     {
         public PageResult(List<TEntity> data, int pageNumber, int pageSize, long count, bool hasNextPage)
         {

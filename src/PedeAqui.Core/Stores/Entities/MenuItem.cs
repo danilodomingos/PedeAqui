@@ -5,10 +5,10 @@ namespace PedeAqui.Core.Stores.Entities
 {
     public class MenuItem : BaseEntity
     {
-        public string Name { get; }
-        public string PhotoUrl { get; }
-        public double Price { get; }
-        public ItemTypeEnum Type { get; }
-        public bool IsUnavailable { get; }
+        public string Name { get; private set; }
+        public string PhotoUrl { get; private set; }
+        public double Price { get; private set; }
+        public ItemTypeEnum Type { get; private set; }
+        public bool IsUnavailable { get; private set; }
     }
 }

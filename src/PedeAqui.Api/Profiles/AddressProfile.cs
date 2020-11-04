@@ -9,6 +9,7 @@ namespace PedeAqui.Api.Profiles
         public AddressProfile()
         {
             CreateMap<AddressModel, Address>()
+                .ReverseMap()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
