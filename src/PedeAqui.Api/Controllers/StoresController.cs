@@ -1,12 +1,11 @@
-﻿using AutoMapper;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using PedeAqui.Api.Application.Commands;
 using PedeAqui.Api.Models.Request.Store;
-using PedeAqui.Api.Models.Response.Store;
+using PedeAqui.Api.Queries;
 using PedeAqui.Api.Utils;
-using PedeAqui.Core.Stores.Entities;
-using PedeAqui.Core.Stores.Repositories;
 using System;
+using System.Threading.Tasks;
 
 namespace PedeAqui.Api.Controllers
 {
@@ -14,66 +13,56 @@ namespace PedeAqui.Api.Controllers
     [Route("[controller]")]
     public class StoresController : ControllerBase
     {
-        private readonly ILogger<StoresController> _logger;
-        private readonly IMapper _mapper;
-        private readonly IStoreRepository _repository;
+        private readonly IMediator _mediator;
 
-        public StoresController(ILogger<StoresController> logger, IStoreRepository repository, IMapper mapper)
+        public StoresController(IMediator mediator)
         {
-            _logger = logger;
-            _repository = repository;
-            _mapper = mapper;
+            _mediator = mediator;
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] PostStoreRequest store)
+        public async Task<IActionResult> Post([FromBody] PostStoreRequest store)
         {
-            var model = _mapper.Map<Store>(store);
-            var location = this.HttpContext.GetLocation(model.Id);
+            var result = await _mediator.Send(store);
+            var location = this.HttpContext.GetLocation(result.Id);
 
-            _repository.Add(model);
-
-            var response = _mapper.Map<PostStoreResponse>(model);
-
-            return Created(location, response);
+            return Created(location, result);
         }
 
         [HttpGet("{id:guid}")]
-        public IActionResult Get([FromRoute] Guid id)
+        public async Task<IActionResult> Get([FromRoute] Guid id)
         {
-            var model = _repository.GetById(id);
+            var result = await _mediator.Send(new GetStoreByIdQuery(id));
 
-            if (model == null)
-                return NotFound(model);
+            if (result == null)
+                return NotFound(result);
 
-            return Ok(_mapper.Map<GetStoreResponse>(model));
+            return Ok(result);
         }
 
         [HttpGet]
-        public IActionResult GetAll([FromQuery] int pageSize = 20, [FromQuery] int pageNumber = 1)
+        public async Task<IActionResult> GetAll([FromQuery] GetStoreByFilterRequest request)
         {
-            return Ok(_repository.GetAll(pageSize: pageSize, pageNumber: pageNumber));
+            return Ok(await _mediator.Send(request));
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            _repository.Delete(id);
+            await _mediator.Send(new DeleteStoreCommand(id));
             return NoContent();
         }
 
         [HttpPatch("{id:guid}")]
-        public IActionResult Update([FromRoute] Guid id, [FromBody] PatchStoreRequest request)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] PatchStoreRequest request)
         {
-            var actual = _repository.GetById(id);
+            request.Id = id;
+            var result = await _mediator.Send(request);
 
-            if (actual == null)
-                return NotFound(actual);
+            if (result == null)
+                return NotFound(result);
 
-            _mapper.Map(request, actual);
-            //_repository.Update(actual);
-
-            return Ok(actual);
+            return Ok(result);
         }
 
     }

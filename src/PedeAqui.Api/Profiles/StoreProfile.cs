@@ -12,13 +12,13 @@ namespace PedeAqui.Api.Profiles
         public StoreProfile()
         {
             CreateMap<PostStoreRequest, Store>();
-            CreateMap<GetStoreResponse, Store>();
-            CreateMap<PageResult<GetStoreResponse>, PageResult<Store>>();
+            CreateMap<PageResult<Store>, PageResult<GetStoreResponse>>();
 
             CreateMap<PatchStoreRequest, Store>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember, destMember) => srcMember.IsNotNull()));
 
             CreateMap<Store, PostStoreResponse>();
+            CreateMap<Store, GetStoreResponse>();
         }
 
     }

@@ -1,4 +1,5 @@
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +40,8 @@ namespace PedeAqui.Api
             services.AddRabbitMq(Configuration.GetRabbitMqSettings());
             services.AddRepositories();
             services.AddPublishers();
+
+            services.AddMediatR(typeof(Startup));
 
         }
 
